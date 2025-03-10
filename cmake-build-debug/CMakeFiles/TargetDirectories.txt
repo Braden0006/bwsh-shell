@@ -1,0 +1,3 @@
+/Users/bradenwhitcher/workspace/github.com/Braden0006/bwsh-shell/cmake-build-debug/CMakeFiles/bwsh_shell.dir
+/Users/bradenwhitcher/workspace/github.com/Braden0006/bwsh-shell/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/bradenwhitcher/workspace/github.com/Braden0006/bwsh-shell/cmake-build-debug/CMakeFiles/rebuild_cache.dir
