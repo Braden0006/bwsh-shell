@@ -12,7 +12,7 @@ void show_files() {
 	if (d) {
 		while ((dir = readdir(d)) != NULL) {
 			if (dir->d_type == DT_REG) {
-				printf("%s\n", dir->d_name);
+				printf("%s    ", dir->d_name);
 			}
 		}
 
@@ -22,17 +22,17 @@ void show_files() {
 
 int main()
 {
-	char command[50];
-	char target[] = "quit";
-
 	char *built_commands[] = {"ls", "cd"};
 
 	// Infinite loop
 	for (;;) {
-		printf("$ ");
+		char command[50];
+		char const target[] = "quit";
+
+		printf("\n$ ");
 		scanf("%s", command);
 
-		// Checks if the input string is equal to "quit"
+		// Checks if the input string is equal to "quit" to break out of infinite loop
 		if (strcmp(command, target) == 0) {
 			break;
 		}
