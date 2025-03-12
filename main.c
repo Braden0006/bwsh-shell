@@ -3,30 +3,23 @@
 #include <unistd.h>
 #include <sys/syslimits.h>
 #include <dirent.h>
+#include <stdlib.h>
 
-void show_files() {
-	DIR *d;
-	struct dirent *dir;
+// TODO: separate the main loop function into a different file
 
-	d = opendir(".");
-	if (d) {
-		while ((dir = readdir(d)) != NULL) {
-			if (dir->d_type == DT_REG) {
-				printf("%s    ", dir->d_name);
-			}
-		}
+// TODO: create the functionality for the built-in "cd" command
 
-		closedir(d);
-	}
-}
+// TODO: create a simple array that keeps the history of commands the user uses
+
+// TODO: create a simple array of key-value pairs for the alias
 
 int main()
 {
-	char *built_commands[] = {"ls", "cd"};
-
+	char *commands[] = {"ls", "cd"};
 	// Infinite loop
 	for (;;) {
-		char command[50];
+
+		char *command = (char *)malloc(50 * sizeof(char));
 		char const target[] = "quit";
 
 		printf("\n$ ");
@@ -38,9 +31,21 @@ int main()
 		}
 		else {
 			for (int i = 0; i < 2; i++) {
-				if (strcmp(command, built_commands[i]) == 0) {
-					if (strcmp(built_commands[i], built_commands[0]) == 0) {
-						show_files();
+				if (strcmp(command, commands[i]) == 0) {
+					if (strcmp(commands[i], commands[0]) == 0) {
+
+						// Creates a new child process and executes the "ls" command
+						const pid_t pid = fork();
+						if (pid == 0) {
+							char *args[] = {"ls", NULL};
+							execvp("/bin/ls", args);
+							perror("execution failed!");
+							exit(1);
+						} else if (pid > 0) {
+							waitpid(pid, NULL, 0);
+						} else {
+							perror("fork failed");
+						}
 					}
 					break;
 				} else {
@@ -48,6 +53,8 @@ int main()
 				}
 			}
 		}
+
+		free(command);
 	}
 
 	return 0;
