@@ -5,6 +5,6 @@
 #ifndef HISTORY_H
 #define HISTORY_H
 
-char command_history(const char *input);
+void printHistory(char *input[]);
 
 #endif //HISTORY_H

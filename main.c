@@ -2,8 +2,8 @@
 #include <string.h>
 #include <unistd.h>
 #include <sys/syslimits.h>
-#include <dirent.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 #include "history.h"
 
@@ -18,24 +18,32 @@
 int main()
 {
 	char *commands[] = {"ls", "cd", "history"};
+	char *command = (char *)malloc(50 * sizeof(char));
+
+	char *commandHistory[2] = {};
 
 	// Infinite loop
 	for (;;) {
 
-		char *command = (char *)malloc(50 * sizeof(char));
 		char const target[] = "quit";
 
 		printf("\n$ ");
 		scanf("%s", command);
 
 		// Checks if the input string is equal to "quit" to break out of infinite loop
-		if (strcmp(command, target) == 0) {
+		if (strcmp(command, target) == 0)
+		{
 			break;
 		}
 		else {
-			for (int i = 0; i < 3; i++) {
-				if (strcmp(command, commands[i]) == 0) {
-					if (strcmp(commands[i], commands[0]) == 0) {
+			bool booleanValue = false;
+
+			for (int i = 0; i < 3; i++)
+			{
+				if (strcmp(command, commands[i]) == 0)
+				{
+					if (strcmp(commands[i], commands[0]) == 0)
+					{
 
 						// Creates a new child process and executes the "ls" command
 						const pid_t pid = fork();
@@ -50,17 +58,43 @@ int main()
 							perror("fork failed");
 						}
 
-						command_history(commands[i]);
+						booleanValue = true;
+
+						if (commandHistory[0] == NULL) {
+							commandHistory[0] = commands[i];
+						} else {
+							commandHistory[1] = commandHistory[0];
+							commandHistory[0] = commands[i];
+						}
+
+						printHistory(commandHistory);
 					}
+
+					else if (strcmp(commands[i], commands[1]) == 0)
+					{
+						if (commandHistory[0] == NULL) {
+							commandHistory[0] = commands[i];
+						} else {
+							commandHistory[1] = commandHistory[0];
+							commandHistory[0] = commands[i];
+						}
+
+						booleanValue = true;
+						printHistory(commandHistory);
+					}
+
 					break;
-				} else {
-					printf("This is not a built-in command!\n");
 				}
 			}
-		}
 
-		free(command);
+				if (booleanValue == false)
+				{
+					printf("This is not a built-in command!\n");
+				}
+		}
 	}
+
+	free(command);
 
 	return 0;
 }

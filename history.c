@@ -4,24 +4,12 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 #include "history.h"
 
-char command_history(const char *input) {
-    int size = 0;
-    size += 1;
-
-    char *history = (char *)malloc(size * sizeof(char));
-
-    for (int i = 0; i < size; i++) {
-        history[0] = *input;
-        printf("%s\n", history);
+void printHistory(char *input[]) {
+    for (int i = 0; i < 2; i++) {
+        printf("%s\n", input[i]);
     }
-
-    if (size == 0) {
-        printf("this array is empty!!");
-    }
-
-    free(history);
-    return 0;
 }
