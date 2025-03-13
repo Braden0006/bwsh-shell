@@ -7,13 +7,67 @@
 
 #include "history.h"
 
+
 // TODO: separate the main loop function into a different file
 
 // TODO: create the functionality for the built-in "cd" command
 
-// TODO: create a simple array that keeps the history of commands the user uses
+// TODO: create a simple hash table for key-value pairs for the alias
 
-// TODO: create a simple array of key-value pairs for the alias
+
+// Struct for a key-value map with a pointer to the next user element
+typedef struct node {
+    char *key;
+    char *value;
+    struct node *next;
+} node;
+
+typedef struct {
+	node *head;
+} linked_list;
+
+linked_list *create_list(void) {
+
+	// Dynamically allocates memory for linked list
+	linked_list *list = malloc(sizeof(linked_list));
+
+	list->head = NULL;
+
+	return list;
+}
+
+void insert(linked_list *list, const char *key, const char *value) {
+	node *new_node = malloc(sizeof(node));
+
+	new_node->key = strdup(key);
+	new_node->value = strdup(value);
+	new_node->next = list->head;
+
+	list->head = new_node;
+}
+
+void print_list(linked_list *list) {
+	node *current = list->head;
+
+	while (current) {
+		printf("%s: %s\n", current->key, current->value);
+		current = current->next;
+	}
+}
+
+void free_list(linked_list *list) {
+	node *current = list->head;
+
+	while (current) {
+		node *temp = current;
+		current = current->next;
+
+		free(temp->key);
+		free(temp->value);
+		free(temp);
+	}
+	free(list);
+}
 
 int main()
 {
