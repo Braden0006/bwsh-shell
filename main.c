@@ -5,6 +5,8 @@
 #include <dirent.h>
 #include <stdlib.h>
 
+#include "history.h"
+
 // TODO: separate the main loop function into a different file
 
 // TODO: create the functionality for the built-in "cd" command
@@ -15,7 +17,8 @@
 
 int main()
 {
-	char *commands[] = {"ls", "cd"};
+	char *commands[] = {"ls", "cd", "history"};
+
 	// Infinite loop
 	for (;;) {
 
@@ -30,7 +33,7 @@ int main()
 			break;
 		}
 		else {
-			for (int i = 0; i < 2; i++) {
+			for (int i = 0; i < 3; i++) {
 				if (strcmp(command, commands[i]) == 0) {
 					if (strcmp(commands[i], commands[0]) == 0) {
 
@@ -46,6 +49,8 @@ int main()
 						} else {
 							perror("fork failed");
 						}
+
+						command_history(commands[i]);
 					}
 					break;
 				} else {
