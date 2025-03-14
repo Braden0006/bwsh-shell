@@ -12,9 +12,6 @@
 
 // TODO: create the functionality for the built-in "cd" command
 
-// TODO: create a simple hash table for key-value pairs for the alias
-
-
 // Struct for a key-value map with a pointer to the next user element
 typedef struct node {
     char *key;
@@ -71,10 +68,10 @@ void free_list(linked_list *list) {
 
 int main()
 {
-	char *commands[] = {"ls", "cd", "history"};
+	char *commands[] = {"ls", "cd", "history", "alias"};
 	char *command = (char *)malloc(50 * sizeof(char));
 
-	char *commandHistory[2] = {};
+	char *commandHistory[3] = {};
 
 	// Infinite loop
 	for (;;) {
@@ -82,22 +79,20 @@ int main()
 		char const target[] = "quit";
 
 		printf("\n$ ");
-		scanf("%s", command);
+		fgets(command, 256, stdin);
+
+		command[strcspn(command, "\n")] = '\0';
 
 		// Checks if the input string is equal to "quit" to break out of infinite loop
-		if (strcmp(command, target) == 0)
-		{
+		if (strcmp(command, target) == 0) {
 			break;
 		}
 		else {
 			bool booleanValue = false;
 
-			for (int i = 0; i < 3; i++)
-			{
-				if (strcmp(command, commands[i]) == 0)
-				{
-					if (strcmp(commands[i], commands[0]) == 0)
-					{
+			for (int i = 0; i < 4; i++) {
+				if (strcmp(command, commands[i]) == 0) {
+					if (strcmp(commands[i], commands[0]) == 0) {
 
 						// Creates a new child process and executes the "ls" command
 						const pid_t pid = fork();
@@ -120,12 +115,9 @@ int main()
 							commandHistory[1] = commandHistory[0];
 							commandHistory[0] = commands[i];
 						}
-
-						printHistory(commandHistory);
 					}
 
-					else if (strcmp(commands[i], commands[1]) == 0)
-					{
+					else if (strcmp(commands[i], commands[1]) == 0) {
 						if (commandHistory[0] == NULL) {
 							commandHistory[0] = commands[i];
 						} else {
@@ -134,20 +126,34 @@ int main()
 						}
 
 						booleanValue = true;
+					}
+
+					else if (strcmp(commands[i], commands[2]) == 0) {
 						printHistory(commandHistory);
+						booleanValue = true;
+					}
+
+					else if (strcmp(commands[i], commands[3]) == 0) {
+						printf("THIS IS AN ALIAS\n");
+						booleanValue = true;
+					}
+
+					else {
+						booleanValue = false;
 					}
 
 					break;
 				}
 			}
 
-				if (booleanValue == false)
-				{
-					printf("This is not a built-in command!\n");
-				}
+            // Lets the user know the command they entered is not valid
+            if (booleanValue == false) {
+                printf("This is not a built-in command!\n");
+            }
 		}
 	}
 
+	// Deallocates memory for the command the user entered
 	free(command);
 
 	return 0;
