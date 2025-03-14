@@ -91,7 +91,7 @@ int main()
 			bool booleanValue = false;
 
 			for (int i = 0; i < 4; i++) {
-				if (strcmp(command, commands[i]) == 0) {
+				if (strstr(command, commands[i]) != NULL) {
 					if (strcmp(commands[i], commands[0]) == 0) {
 
 						// Creates a new child process and executes the "ls" command
@@ -133,8 +133,26 @@ int main()
 						booleanValue = true;
 					}
 
-					else if (strcmp(commands[i], commands[3]) == 0) {
-						printf("THIS IS AN ALIAS\n");
+					else if (strstr(commands[i], commands[3]) != NULL) {
+						char *token;
+						char *delimiter = " ";
+
+						char *tokens[3] = {};
+						int token_count = 0;
+
+						token = strtok(command, delimiter);
+
+						while (token != NULL && token_count < 3) {
+							tokens[token_count] = strdup(token);
+							printf("Token: %s\n", token);
+							token = strtok(NULL, delimiter);
+
+							token_count++;
+						}
+
+						for (int i = 0; i < 3; i++) {
+							printf("%s", tokens[i]);
+						}
 						booleanValue = true;
 					}
 
