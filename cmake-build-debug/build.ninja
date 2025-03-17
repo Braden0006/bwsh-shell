@@ -61,6 +61,18 @@ build CMakeFiles/bwsh_shell.dir/history.c.o: C_COMPILER__bwsh_shell_unscanned_De
   OBJECT_DIR = CMakeFiles/bwsh_shell.dir
   OBJECT_FILE_DIR = CMakeFiles/bwsh_shell.dir
 
+build CMakeFiles/bwsh_shell.dir/linkedList.c.o: C_COMPILER__bwsh_shell_unscanned_Debug /Users/bradenwhitcher/workspace/github.com/Braden0006/bwsh-shell/linkedList.c || cmake_object_order_depends_target_bwsh_shell
+  DEP_FILE = CMakeFiles/bwsh_shell.dir/linkedList.c.o.d
+  FLAGS = -g -std=gnu11 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk -fcolor-diagnostics
+  OBJECT_DIR = CMakeFiles/bwsh_shell.dir
+  OBJECT_FILE_DIR = CMakeFiles/bwsh_shell.dir
+
+build CMakeFiles/bwsh_shell.dir/shellLoop.c.o: C_COMPILER__bwsh_shell_unscanned_Debug /Users/bradenwhitcher/workspace/github.com/Braden0006/bwsh-shell/shellLoop.c || cmake_object_order_depends_target_bwsh_shell
+  DEP_FILE = CMakeFiles/bwsh_shell.dir/shellLoop.c.o.d
+  FLAGS = -g -std=gnu11 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk -fcolor-diagnostics
+  OBJECT_DIR = CMakeFiles/bwsh_shell.dir
+  OBJECT_FILE_DIR = CMakeFiles/bwsh_shell.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target bwsh_shell
@@ -69,7 +81,7 @@ build CMakeFiles/bwsh_shell.dir/history.c.o: C_COMPILER__bwsh_shell_unscanned_De
 #############################################
 # Link the executable bwsh_shell
 
-build bwsh_shell: C_EXECUTABLE_LINKER__bwsh_shell_Debug CMakeFiles/bwsh_shell.dir/main.c.o CMakeFiles/bwsh_shell.dir/history.c.o
+build bwsh_shell: C_EXECUTABLE_LINKER__bwsh_shell_Debug CMakeFiles/bwsh_shell.dir/main.c.o CMakeFiles/bwsh_shell.dir/history.c.o CMakeFiles/bwsh_shell.dir/linkedList.c.o CMakeFiles/bwsh_shell.dir/shellLoop.c.o
   FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk
   OBJECT_DIR = CMakeFiles/bwsh_shell.dir
   POST_BUILD = :
