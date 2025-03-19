@@ -9,9 +9,10 @@
 
 int create_process(char **args) {
 
-	pid_t pid = fork();
+	const pid_t pid = fork();
 
 	if (pid == 0) {
+
 		if (execvp(args[0], args) == -1) {
 			perror("execution failed!");
 		}
@@ -21,6 +22,11 @@ int create_process(char **args) {
 	}
 	else if (pid > 0) {
 		waitpid(pid, NULL, 0);
+
+		// If the second argument for a command that starts with 'cd' is valid, then execute it
+		if (chdir(args[1]) != 0) {
+            chdir(args[1]);
+		}
 	} else {
 		perror("fork failed");
 	}
