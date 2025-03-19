@@ -2,15 +2,13 @@
 // Created by Braden Whitcher on 3/17/25.
 //
 
-#include "shellLoop.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
 #include <sys/syslimits.h>
 #include <unistd.h>
-#include <stdlib.h>
 
-#include "history.h"
+#include "shell_functions.h"
 
 void main_loop(char *command, char *commands[], char *commandHistory[]) {
 
@@ -30,24 +28,17 @@ void main_loop(char *command, char *commands[], char *commandHistory[]) {
 		else {
 			bool booleanValue = false;
 
-			for (int i = 0; i < 4; i++) {
+			for (int i = 0; i < 6; i++) {
 				if (strstr(command, commands[i]) != NULL) {
 
 					// Checks to see if the user command starts with 'ls'
 					if (strcmp(commands[i], commands[0]) == 0) {
 
-						// Creates a new child process and executes the "ls" command
-						const pid_t pid = fork();
-						if (pid == 0) {
-							char *args[] = {"ls", NULL};
-							execvp("/bin/ls", args);
-							perror("execution failed!");
-							exit(1);
-						} else if (pid > 0) {
-							waitpid(pid, NULL, 0);
-						} else {
-							perror("fork failed");
-						}
+						// Tokenizes the input command and saves it to a separate variable
+						char **user_line = tokenize_line(command);
+
+						// Creates the child process that executes the 'ls' command
+						create_process(user_line);
 
 						booleanValue = true;
 
@@ -61,6 +52,13 @@ void main_loop(char *command, char *commands[], char *commandHistory[]) {
 
 					// Checks to see if the user command starts with 'cd'
 					else if (strcmp(commands[i], commands[1]) == 0) {
+
+						// Tokenizes user input and saves it to separate variable
+						char **user_input_cd = tokenize_line(command);
+
+						// Creates a separate child process that executes 'cd'
+						create_process(user_input_cd);
+
 						if (commandHistory[0] == NULL) {
 							commandHistory[0] = commands[i];
 						} else {
@@ -73,31 +71,31 @@ void main_loop(char *command, char *commands[], char *commandHistory[]) {
 
 					// Checks to see if the user command start with 'history'
 					else if (strcmp(commands[i], commands[2]) == 0) {
+
+						// Prints the command history
 						printHistory(commandHistory);
 						booleanValue = true;
 					}
 
 					// Checks to see if the user command starts with 'alias'
 					else if (strstr(commands[i], commands[3]) != NULL) {
-						char *token;
-						char *delimiter = " ";
+						tokenize_line(command);
+						booleanValue = true;
+					}
 
-						char *tokens[3] = {};
-						int token_count = 0;
+					else if (strstr(commands[i], commands[4]) != NULL) {
+						char **user_command_clear = tokenize_line(command);
 
-						token = strtok(command, delimiter);
+						create_process(user_command_clear);
 
-						while (token != NULL && token_count < 3) {
-							tokens[token_count] = strdup(token);
-							printf("Token: %s\n", token);
-							token = strtok(NULL, delimiter);
+						booleanValue = true;
+					}
+					else if (strstr(commands[i], commands[5]) != NULL) {
+						char **user_command_cd = tokenize_line(command);
+						chdir(user_command_cd[1]);
 
-							token_count++;
-						}
+						create_process(user_command_cd);
 
-						for (int i = 0; i < 3; i++) {
-							printf("%s", tokens[i]);
-						}
 						booleanValue = true;
 					}
 

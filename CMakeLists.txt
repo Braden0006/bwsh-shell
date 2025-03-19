@@ -5,8 +5,9 @@ set(CMAKE_C_STANDARD 11)
 
 add_executable(bwsh_shell main.c
         history.c
-        history.h
         linkedList.c
         linkedList.h
         shellLoop.c
-        shellLoop.h)
+        shell_functions.h
+        create_process.c
+        tokenize_line.c)
