@@ -12,13 +12,17 @@
 
 void main_loop(char *command, char *commands[], char *commandHistory[]) {
 
+	// Infinite loop
 	for (;;) {
 
 		char const target[] = "quit";
 
 		printf("\n$ ");
+
+		// Reads line from filestream
 		fgets(command, 256, stdin);
 
+		// Replaces newline character with NULL terminator character
 		command[strcspn(command, "\n")] = '\0';
 
 		// Checks if the input string is equal to "quit" to break out of infinite loop
@@ -26,9 +30,11 @@ void main_loop(char *command, char *commands[], char *commandHistory[]) {
 			break;
 		}
 		else {
-			bool booleanValue = false;
 
-			for (int i = 0; i < 6; i++) {
+			// Boolean value that tracks whether the user command is a built-in command or not
+			bool is_command = false;
+
+			for (int i = 0; i < 5; i++) {
 				if (strstr(command, commands[i]) != NULL) {
 
 					// Checks to see if the user command starts with 'ls'
@@ -40,7 +46,7 @@ void main_loop(char *command, char *commands[], char *commandHistory[]) {
 						// Creates the child process that executes the 'ls' command
 						create_process(user_line);
 
-						booleanValue = true;
+						is_command = true;
 
 						if (commandHistory[0] == NULL) {
 							commandHistory[0] = commands[i];
@@ -66,7 +72,7 @@ void main_loop(char *command, char *commands[], char *commandHistory[]) {
 							commandHistory[0] = commands[i];
 						}
 
-						booleanValue = true;
+						is_command = true;
 					}
 
 					// Checks to see if the user command start with 'history'
@@ -74,33 +80,32 @@ void main_loop(char *command, char *commands[], char *commandHistory[]) {
 
 						// Prints the command history
 						printHistory(commandHistory);
-						booleanValue = true;
+						is_command = true;
 					}
 
 					// Checks to see if the user command starts with 'alias'
 					else if (strstr(commands[i], commands[3]) != NULL) {
+
+						// Tokenizes user input
 						tokenize_line(command);
-						booleanValue = true;
+
+						is_command = true;
 					}
 
+					// Checks to see if the user command starts with 'pwd'
 					else if (strstr(commands[i], commands[4]) != NULL) {
+
+						// Tokenizes user input
 						char **user_command_clear = tokenize_line(command);
 
+						// Creates separate child process for 'pwd' commmand
 						create_process(user_command_clear);
 
-						booleanValue = true;
-					}
-					else if (strstr(commands[i], commands[5]) != NULL) {
-						char **user_command_cd = tokenize_line(command);
-						chdir(user_command_cd[1]);
-
-						create_process(user_command_cd);
-
-						booleanValue = true;
+						is_command = true;
 					}
 
 					else {
-						booleanValue = false;
+						is_command = false;
 					}
 
 					break;
@@ -108,7 +113,7 @@ void main_loop(char *command, char *commands[], char *commandHistory[]) {
 			}
 
             // Lets the user know the command they entered is not valid
-            if (booleanValue == false) {
+            if (is_command == false) {
                 printf("This is not a built-in command!\n");
             }
 		}

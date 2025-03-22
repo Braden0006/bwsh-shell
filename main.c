@@ -13,8 +13,15 @@
 
 int main()
 {
-	char *commands[] = {"ls", "cd", "history", "alias", "pwd", "cd"};
+	char *commands[] = {"ls", "cd", "history", "alias", "pwd"};
 	char *command = (char *)malloc(50 * sizeof(char));
+
+	// Checks to see if memory allocation failed
+	if (command == NULL) {
+		free(command);
+		perror("Memory allocation for user command failed!");
+		exit(EXIT_FAILURE);
+	}
 
 	char *commandHistory[3] = {};
 
