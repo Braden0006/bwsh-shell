@@ -20,7 +20,7 @@ int create_process(char **args) {
 		// was created successfully
 		if (execvp(args[0], args) == -1) {
 			perror("execution failed!");
-            exit(EXIT_FAILURE);
+			exit(EXIT_FAILURE);
 		}
 
 	}

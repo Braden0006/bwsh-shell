@@ -34,6 +34,7 @@ void main_loop(char *command, char *commands[], char *commandHistory[]) {
 			// Boolean value that tracks whether the user command is a built-in command or not
 			bool is_command = false;
 
+			// Loops over each element in the "command" array
 			for (int i = 0; i < 5; i++) {
 				if (strstr(command, commands[i]) != NULL) {
 
@@ -47,13 +48,6 @@ void main_loop(char *command, char *commands[], char *commandHistory[]) {
 						create_process(user_line);
 
 						is_command = true;
-
-						if (commandHistory[0] == NULL) {
-							commandHistory[0] = commands[i];
-						} else {
-							commandHistory[1] = commandHistory[0];
-							commandHistory[0] = commands[i];
-						}
 					}
 
 					// Checks to see if the user command starts with 'cd'
@@ -64,13 +58,6 @@ void main_loop(char *command, char *commands[], char *commandHistory[]) {
 
 						// Creates a separate child process that executes 'cd'
 						create_process(user_input_cd);
-
-						if (commandHistory[0] == NULL) {
-							commandHistory[0] = commands[i];
-						} else {
-							commandHistory[1] = commandHistory[0];
-							commandHistory[0] = commands[i];
-						}
 
 						is_command = true;
 					}
@@ -112,10 +99,10 @@ void main_loop(char *command, char *commands[], char *commandHistory[]) {
 				}
 			}
 
-            // Lets the user know the command they entered is not valid
-            if (is_command == false) {
-                printf("This is not a built-in command!\n");
-            }
+			// Lets the user know the command they entered is not valid
+			if (is_command == false) {
+				printf("This is not a built-in command!\n");
+			}
 		}
 	}
 }

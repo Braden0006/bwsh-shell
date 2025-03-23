@@ -7,10 +7,6 @@
 
 #include "shell_functions.h"
 
-// TODO: separate data structure and data integration into separate files
-// TODO: create the functionality for the built-in "cd" command
-// TODO: properly set up SQLite database for aliases
-
 int main()
 {
 	char *commands[] = {"ls", "cd", "history", "alias", "pwd"};
