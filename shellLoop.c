@@ -7,10 +7,11 @@
 #include <stdbool.h>
 #include <sys/syslimits.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 #include "shell_functions.h"
 
-void main_loop(char *command, char *commands[], char *commandHistory[]) {
+void main_loop(char *command, char *commands[], linked_list *list) {
 
 	// Infinite loop
 	for (;;) {
@@ -47,6 +48,9 @@ void main_loop(char *command, char *commands[], char *commandHistory[]) {
 						// Creates the child process that executes the 'ls' command
 						create_process(user_line);
 
+						// Inserts command as node in beginning of list
+						insertAtBeginning(list, command);
+
 						is_command = true;
 					}
 
@@ -59,6 +63,9 @@ void main_loop(char *command, char *commands[], char *commandHistory[]) {
 						// Creates a separate child process that executes 'cd'
 						create_process(user_input_cd);
 
+						// Inserts command as node in beginning of list
+						insertAtBeginning(list, command);
+
 						is_command = true;
 					}
 
@@ -66,7 +73,7 @@ void main_loop(char *command, char *commands[], char *commandHistory[]) {
 					else if (strcmp(commands[i], commands[2]) == 0) {
 
 						// Prints the command history
-						printHistory(commandHistory);
+						print_list(list);
 						is_command = true;
 					}
 
@@ -75,6 +82,9 @@ void main_loop(char *command, char *commands[], char *commandHistory[]) {
 
 						// Tokenizes user input
 						tokenize_line(command);
+
+						// Inserts command as node in beginning of list
+						insertAtBeginning(list, command);
 
 						is_command = true;
 					}
@@ -87,6 +97,9 @@ void main_loop(char *command, char *commands[], char *commandHistory[]) {
 
 						// Creates separate child process for 'pwd' commmand
 						create_process(user_command_clear);
+
+						// Inserts command as node in beginning of list
+						insertAtBeginning(list, command);
 
 						is_command = true;
 					}
@@ -101,8 +114,67 @@ void main_loop(char *command, char *commands[], char *commandHistory[]) {
 
 			// Lets the user know the command they entered is not valid
 			if (is_command == false) {
+
+				// Inserts command as node in beginning of list
+				insertAtBeginning(list, command);
+
 				printf("This is not a built-in command!\n");
 			}
 		}
 	}
+}
+
+// Function for creating a linked list
+linked_list *create_list(void) {
+	// Dynamically allocates memory for linked list
+	linked_list *list = malloc(sizeof(linked_list));
+
+	list->head = NULL;
+
+	return list;
+}
+
+// Function for inserting a node into a linked list
+void insertAtBeginning(linked_list *list, const char *value) {
+
+	// Dynamically allocates memory for the new node
+	node *new_node = malloc(sizeof(node));
+
+	// Sets the key, value, and 'next' pointer for a node
+	new_node->value = strdup(value);
+	new_node->next = list->head;
+
+	list->head = new_node;
+}
+
+// Function for printing each node in a linked list
+void print_list(linked_list *list) {
+
+	// Node variable for keeping track of the current node
+	node *current = list->head;
+
+	// Prints each node in the list until it reaches the end
+	while (current) {
+		printf("%s\n", current->value);
+		current = current->next;
+	}
+}
+
+// Function for deallocating the memory for a linked list
+void free_list(linked_list *list) {
+
+	// Defines a new node variable for keeping track of each node
+	node *current = list->head;
+
+	// Deallocates the memory for each node until it reaches the end of the list
+	while (current) {
+		node *temp = current;
+		current = current->next;
+
+		free(temp->value);
+		free(temp);
+	}
+
+	// Deallocates memory for the linked list
+	free(list);
 }

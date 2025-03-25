@@ -13,12 +13,6 @@
 },
 {
   "directory": "/Users/bradenwhitcher/workspace/github.com/Braden0006/bwsh-shell/out/Debug",
-  "command": "/Library/Developer/CommandLineTools/usr/bin/cc   -g -std=gnu11 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk -o CMakeFiles/bwsh_shell.dir/linkedList.c.o -c /Users/bradenwhitcher/workspace/github.com/Braden0006/bwsh-shell/linkedList.c",
-  "file": "/Users/bradenwhitcher/workspace/github.com/Braden0006/bwsh-shell/linkedList.c",
-  "output": "CMakeFiles/bwsh_shell.dir/linkedList.c.o"
-},
-{
-  "directory": "/Users/bradenwhitcher/workspace/github.com/Braden0006/bwsh-shell/out/Debug",
   "command": "/Library/Developer/CommandLineTools/usr/bin/cc   -g -std=gnu11 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk -o CMakeFiles/bwsh_shell.dir/shellLoop.c.o -c /Users/bradenwhitcher/workspace/github.com/Braden0006/bwsh-shell/shellLoop.c",
   "file": "/Users/bradenwhitcher/workspace/github.com/Braden0006/bwsh-shell/shellLoop.c",
   "output": "CMakeFiles/bwsh_shell.dir/shellLoop.c.o"

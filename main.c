@@ -20,12 +20,16 @@ int main()
 	}
 
 	char *commandHistory[3] = {};
+	linked_list *list = create_list();
 
 	// Infinite loop
-	main_loop(command, commands, commandHistory);
+	main_loop(command, commands, list);
 
 	// Deallocates memory for the command the user entered
 	free(command);
+
+	// Deallocates memory for the linked list
+	free_list(list);
 
 	return 0;
 }

@@ -100,24 +100,10 @@ CMakeFiles/bwsh_shell.dir/history.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/bwsh_shell.dir/history.c.s"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/bradenwhitcher/workspace/github.com/Braden0006/bwsh-shell/history.c -o CMakeFiles/bwsh_shell.dir/history.c.s
 
-CMakeFiles/bwsh_shell.dir/linkedList.c.o: CMakeFiles/bwsh_shell.dir/flags.make
-CMakeFiles/bwsh_shell.dir/linkedList.c.o: /Users/bradenwhitcher/workspace/github.com/Braden0006/bwsh-shell/linkedList.c
-CMakeFiles/bwsh_shell.dir/linkedList.c.o: CMakeFiles/bwsh_shell.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/bradenwhitcher/workspace/github.com/Braden0006/bwsh-shell/out/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/bwsh_shell.dir/linkedList.c.o"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/bwsh_shell.dir/linkedList.c.o -MF CMakeFiles/bwsh_shell.dir/linkedList.c.o.d -o CMakeFiles/bwsh_shell.dir/linkedList.c.o -c /Users/bradenwhitcher/workspace/github.com/Braden0006/bwsh-shell/linkedList.c
-
-CMakeFiles/bwsh_shell.dir/linkedList.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/bwsh_shell.dir/linkedList.c.i"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/bradenwhitcher/workspace/github.com/Braden0006/bwsh-shell/linkedList.c > CMakeFiles/bwsh_shell.dir/linkedList.c.i
-
-CMakeFiles/bwsh_shell.dir/linkedList.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/bwsh_shell.dir/linkedList.c.s"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/bradenwhitcher/workspace/github.com/Braden0006/bwsh-shell/linkedList.c -o CMakeFiles/bwsh_shell.dir/linkedList.c.s
-
 CMakeFiles/bwsh_shell.dir/shellLoop.c.o: CMakeFiles/bwsh_shell.dir/flags.make
 CMakeFiles/bwsh_shell.dir/shellLoop.c.o: /Users/bradenwhitcher/workspace/github.com/Braden0006/bwsh-shell/shellLoop.c
 CMakeFiles/bwsh_shell.dir/shellLoop.c.o: CMakeFiles/bwsh_shell.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/bradenwhitcher/workspace/github.com/Braden0006/bwsh-shell/out/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/bwsh_shell.dir/shellLoop.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/bradenwhitcher/workspace/github.com/Braden0006/bwsh-shell/out/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/bwsh_shell.dir/shellLoop.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/bwsh_shell.dir/shellLoop.c.o -MF CMakeFiles/bwsh_shell.dir/shellLoop.c.o.d -o CMakeFiles/bwsh_shell.dir/shellLoop.c.o -c /Users/bradenwhitcher/workspace/github.com/Braden0006/bwsh-shell/shellLoop.c
 
 CMakeFiles/bwsh_shell.dir/shellLoop.c.i: cmake_force
@@ -131,7 +117,7 @@ CMakeFiles/bwsh_shell.dir/shellLoop.c.s: cmake_force
 CMakeFiles/bwsh_shell.dir/create_process.c.o: CMakeFiles/bwsh_shell.dir/flags.make
 CMakeFiles/bwsh_shell.dir/create_process.c.o: /Users/bradenwhitcher/workspace/github.com/Braden0006/bwsh-shell/create_process.c
 CMakeFiles/bwsh_shell.dir/create_process.c.o: CMakeFiles/bwsh_shell.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/bradenwhitcher/workspace/github.com/Braden0006/bwsh-shell/out/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/bwsh_shell.dir/create_process.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/bradenwhitcher/workspace/github.com/Braden0006/bwsh-shell/out/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/bwsh_shell.dir/create_process.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/bwsh_shell.dir/create_process.c.o -MF CMakeFiles/bwsh_shell.dir/create_process.c.o.d -o CMakeFiles/bwsh_shell.dir/create_process.c.o -c /Users/bradenwhitcher/workspace/github.com/Braden0006/bwsh-shell/create_process.c
 
 CMakeFiles/bwsh_shell.dir/create_process.c.i: cmake_force
@@ -145,7 +131,7 @@ CMakeFiles/bwsh_shell.dir/create_process.c.s: cmake_force
 CMakeFiles/bwsh_shell.dir/tokenize_line.c.o: CMakeFiles/bwsh_shell.dir/flags.make
 CMakeFiles/bwsh_shell.dir/tokenize_line.c.o: /Users/bradenwhitcher/workspace/github.com/Braden0006/bwsh-shell/tokenize_line.c
 CMakeFiles/bwsh_shell.dir/tokenize_line.c.o: CMakeFiles/bwsh_shell.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/bradenwhitcher/workspace/github.com/Braden0006/bwsh-shell/out/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/bwsh_shell.dir/tokenize_line.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/bradenwhitcher/workspace/github.com/Braden0006/bwsh-shell/out/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/bwsh_shell.dir/tokenize_line.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/bwsh_shell.dir/tokenize_line.c.o -MF CMakeFiles/bwsh_shell.dir/tokenize_line.c.o.d -o CMakeFiles/bwsh_shell.dir/tokenize_line.c.o -c /Users/bradenwhitcher/workspace/github.com/Braden0006/bwsh-shell/tokenize_line.c
 
 CMakeFiles/bwsh_shell.dir/tokenize_line.c.i: cmake_force
@@ -160,7 +146,6 @@ CMakeFiles/bwsh_shell.dir/tokenize_line.c.s: cmake_force
 bwsh_shell_OBJECTS = \
 "CMakeFiles/bwsh_shell.dir/main.c.o" \
 "CMakeFiles/bwsh_shell.dir/history.c.o" \
-"CMakeFiles/bwsh_shell.dir/linkedList.c.o" \
 "CMakeFiles/bwsh_shell.dir/shellLoop.c.o" \
 "CMakeFiles/bwsh_shell.dir/create_process.c.o" \
 "CMakeFiles/bwsh_shell.dir/tokenize_line.c.o"
@@ -170,13 +155,12 @@ bwsh_shell_EXTERNAL_OBJECTS =
 
 bwsh_shell: CMakeFiles/bwsh_shell.dir/main.c.o
 bwsh_shell: CMakeFiles/bwsh_shell.dir/history.c.o
-bwsh_shell: CMakeFiles/bwsh_shell.dir/linkedList.c.o
 bwsh_shell: CMakeFiles/bwsh_shell.dir/shellLoop.c.o
 bwsh_shell: CMakeFiles/bwsh_shell.dir/create_process.c.o
 bwsh_shell: CMakeFiles/bwsh_shell.dir/tokenize_line.c.o
 bwsh_shell: CMakeFiles/bwsh_shell.dir/build.make
 bwsh_shell: CMakeFiles/bwsh_shell.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/bradenwhitcher/workspace/github.com/Braden0006/bwsh-shell/out/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking C executable bwsh_shell"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/bradenwhitcher/workspace/github.com/Braden0006/bwsh-shell/out/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking C executable bwsh_shell"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/bwsh_shell.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
