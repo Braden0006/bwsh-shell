@@ -7,7 +7,6 @@
 
 // Struct for a key-value map with a pointer to the next user element
 typedef struct node {
-    char *key;
     char *value;
     struct node *next;
 } node;
@@ -21,7 +20,7 @@ typedef struct {
 linked_list *create_list(void);
 
 // Functions that inserts a node into a linked list
-void insert(linked_list *list, const char *key, const char *value);
+void insert(linked_list *list, const char *value);
 
 // Function that prints the nodes in a linked list
 void print_list(linked_list *list);

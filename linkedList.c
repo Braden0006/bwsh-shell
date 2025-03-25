@@ -20,13 +20,12 @@ linked_list *create_list(void) {
 }
 
 // Function for inserting a node into a linked list
-void insert(linked_list *list, const char *key, const char *value) {
+void insert(linked_list *list, const char *value) {
 
 	// Dynamically allocates memory for the new node
 	node *new_node = malloc(sizeof(node));
 
 	// Sets the key, value, and 'next' pointer for a node
-	new_node->key = strdup(key);
 	new_node->value = strdup(value);
 	new_node->next = list->head;
 
@@ -41,7 +40,7 @@ void print_list(linked_list *list) {
 
 	// Prints each node in the list until it reaches the end
 	while (current) {
-		printf("%s: %s\n", current->key, current->value);
+		printf("%s\n", current->value);
 		current = current->next;
 	}
 }
@@ -57,7 +56,6 @@ void free_list(linked_list *list) {
 		node *temp = current;
 		current = current->next;
 
-		free(temp->key);
 		free(temp->value);
 		free(temp);
 	}
