@@ -1,8 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/bwsh_shell.dir/create_process.c.o"
   "CMakeFiles/bwsh_shell.dir/create_process.c.o.d"
-  "CMakeFiles/bwsh_shell.dir/history.c.o"
-  "CMakeFiles/bwsh_shell.dir/history.c.o.d"
   "CMakeFiles/bwsh_shell.dir/main.c.o"
   "CMakeFiles/bwsh_shell.dir/main.c.o.d"
   "CMakeFiles/bwsh_shell.dir/shellLoop.c.o"

@@ -153,30 +153,6 @@ create_process.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bwsh_shell.dir/build.make CMakeFiles/bwsh_shell.dir/create_process.c.s
 .PHONY : create_process.c.s
 
-history.o: history.c.o
-.PHONY : history.o
-
-# target to build an object file
-history.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/bwsh_shell.dir/build.make CMakeFiles/bwsh_shell.dir/history.c.o
-.PHONY : history.c.o
-
-history.i: history.c.i
-.PHONY : history.i
-
-# target to preprocess a source file
-history.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/bwsh_shell.dir/build.make CMakeFiles/bwsh_shell.dir/history.c.i
-.PHONY : history.c.i
-
-history.s: history.c.s
-.PHONY : history.s
-
-# target to generate assembly for a file
-history.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/bwsh_shell.dir/build.make CMakeFiles/bwsh_shell.dir/history.c.s
-.PHONY : history.c.s
-
 main.o: main.c.o
 .PHONY : main.o
 
@@ -261,9 +237,6 @@ help:
 	@echo "... create_process.o"
 	@echo "... create_process.i"
 	@echo "... create_process.s"
-	@echo "... history.o"
-	@echo "... history.i"
-	@echo "... history.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
