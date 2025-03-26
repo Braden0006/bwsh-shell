@@ -43,8 +43,12 @@ void main_loop(char *command, char *commands[], linked_list *list) {
 					// Checks to see if the user command starts with 'ls'
 					if (strcmp(commands[i], commands[0]) == 0) {
 
+						char *duplicate_string;
+
+						duplicate_string = strdup(command);
+
 						// Tokenizes the input command and saves it to a separate variable
-						char **user_line = tokenize_line(command);
+						char **user_line = tokenize_line(duplicate_string);
 
 						// Creates the child process that executes the 'ls' command
 						create_process(user_line);
@@ -53,13 +57,19 @@ void main_loop(char *command, char *commands[], linked_list *list) {
 						insertAtBeginning(list, command);
 
 						is_command = true;
+
+						free(duplicate_string);
 					}
 
 					// Checks to see if the user command starts with 'cd'
 					else if (strcmp(commands[i], commands[1]) == 0) {
 
+						char *duplicate_string;
+
+						duplicate_string = strdup(command);
+
 						// Tokenizes user input and saves it to separate variable
-						char **user_input_cd = tokenize_line(command);
+						char **user_input_cd = tokenize_line(duplicate_string);
 
 						// Creates a separate child process that executes 'cd'
 						create_process(user_input_cd);
@@ -68,6 +78,8 @@ void main_loop(char *command, char *commands[], linked_list *list) {
 						insertAtBeginning(list, command);
 
 						is_command = true;
+
+						free(duplicate_string);
 					}
 
 					// Checks to see if the user command start with 'history'
@@ -81,20 +93,30 @@ void main_loop(char *command, char *commands[], linked_list *list) {
 					// Checks to see if the user command starts with 'alias'
 					else if (strstr(commands[i], commands[3]) != NULL) {
 
+						char *duplicate_string;
+
+						duplicate_string = strdup(command);
+
 						// Tokenizes user input
-						tokenize_line(command);
+						tokenize_line(duplicate_string);
 
 						// Inserts command as node in beginning of linked list
 						insertAtBeginning(list, command);
 
 						is_command = true;
+
+						free(duplicate_string);
 					}
 
 					// Checks to see if the user command starts with 'pwd'
 					else if (strstr(commands[i], commands[4]) != NULL) {
 
+						char *duplicate_string;
+
+						duplicate_string = strdup(command);
+
 						// Tokenizes user input
-						char **user_command_clear = tokenize_line(command);
+						char **user_command_clear = tokenize_line(duplicate_string);
 
 						// Creates separate child process for 'pwd' commmand
 						create_process(user_command_clear);
@@ -103,6 +125,8 @@ void main_loop(char *command, char *commands[], linked_list *list) {
 						insertAtBeginning(list, command);
 
 						is_command = true;
+
+						free(duplicate_string);
 					}
 
 					// Checks to see if the user command is "clear"
