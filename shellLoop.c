@@ -8,6 +8,7 @@
 #include <sys/syslimits.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <ncurses.h>
 
 #include "shell_functions.h"
 
@@ -36,7 +37,7 @@ void main_loop(char *command, char *commands[], linked_list *list) {
 			bool is_command = false;
 
 			// Loops over each element in the "command" array
-			for (int i = 0; i < 5; i++) {
+			for (int i = 0; i < 6; i++) {
 				if (strstr(command, commands[i]) != NULL) {
 
 					// Checks to see if the user command starts with 'ls'
@@ -48,7 +49,7 @@ void main_loop(char *command, char *commands[], linked_list *list) {
 						// Creates the child process that executes the 'ls' command
 						create_process(user_line);
 
-						// Inserts command as node in beginning of list
+						// Inserts command as node in beginning of linked list
 						insertAtBeginning(list, command);
 
 						is_command = true;
@@ -63,7 +64,7 @@ void main_loop(char *command, char *commands[], linked_list *list) {
 						// Creates a separate child process that executes 'cd'
 						create_process(user_input_cd);
 
-						// Inserts command as node in beginning of list
+						// Inserts command as node in beginning of linked list
 						insertAtBeginning(list, command);
 
 						is_command = true;
@@ -83,7 +84,7 @@ void main_loop(char *command, char *commands[], linked_list *list) {
 						// Tokenizes user input
 						tokenize_line(command);
 
-						// Inserts command as node in beginning of list
+						// Inserts command as node in beginning of linked list
 						insertAtBeginning(list, command);
 
 						is_command = true;
@@ -98,7 +99,19 @@ void main_loop(char *command, char *commands[], linked_list *list) {
 						// Creates separate child process for 'pwd' commmand
 						create_process(user_command_clear);
 
-						// Inserts command as node in beginning of list
+						// Inserts command as node in beginning of linked list
+						insertAtBeginning(list, command);
+
+						is_command = true;
+					}
+
+					// Checks to see if the user command is "clear"
+					else if (strstr(commands[i], commands[5]) != NULL) {
+
+						// Clears the terminal
+						system("clear");
+
+						// Inserts command as node in beginning of linked list
 						insertAtBeginning(list, command);
 
 						is_command = true;

@@ -9,7 +9,7 @@
 
 int main()
 {
-	char *commands[] = {"ls", "cd", "history", "alias", "pwd"};
+	char *commands[] = {"ls", "cd", "history", "alias", "pwd", "clear"};
 	char *command = (char *)malloc(50 * sizeof(char));
 
 	// Checks to see if memory allocation failed
