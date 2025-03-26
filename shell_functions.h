@@ -6,14 +6,14 @@
 #define SHELL_FUNCTIONS_H
 
 // Struct for a key-value map with a pointer to the next user element
-typedef struct node {
+typedef struct Node {
     char *value;
-    struct node *next;
-} node;
+    struct Node *next;
+} Node;
 
 // Struct for the linked list to store the nodes
 typedef struct {
-	node *head;
+	Node *head;
 } linked_list;
 
 // Function that creates a linked list

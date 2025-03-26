@@ -175,7 +175,7 @@ linked_list *create_list(void) {
 void insertAtBeginning(linked_list *list, const char *value) {
 
 	// Dynamically allocates memory for the new node
-	node *new_node = malloc(sizeof(node));
+	Node *new_node = malloc(sizeof(Node));
 
 	// Sets the key, value, and 'next' pointer for a node
 	new_node->value = strdup(value);
@@ -188,7 +188,7 @@ void insertAtBeginning(linked_list *list, const char *value) {
 void print_list(linked_list *list) {
 
 	// Node variable for keeping track of the current node
-	node *current = list->head;
+	Node *current = list->head;
 
 	// Prints each node in the list until it reaches the end
 	while (current) {
@@ -201,11 +201,11 @@ void print_list(linked_list *list) {
 void free_list(linked_list *list) {
 
 	// Defines a new node variable for keeping track of each node
-	node *current = list->head;
+	Node *current = list->head;
 
 	// Deallocates the memory for each node until it reaches the end of the list
 	while (current) {
-		node *temp = current;
+		Node *temp = current;
 		current = current->next;
 
 		free(temp->value);
