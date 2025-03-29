@@ -21,7 +21,28 @@ void disableRawInput() {
 	tcgetattr(STDIN_FILENO, &t);
 	
 	// Enables canonical and echo mode
-	t.c_lflag |= ~(ICANON | ECHO);
+	t.c_lflag |= (ICANON | ECHO);
 
 	tcsetattr(STDIN_FILENO, TCSANOW, &t);
+}
+
+int callFunctions() {
+	char c;
+
+	rawInput();
+
+	printf("Press any key (q to quit): \n");
+
+	while (1) {
+		read(STDIN_FILENO, &c, 1);
+		printf("You pressed: %c\n", c);
+
+		if (c == 'q') {
+			break;
+		}
+	}
+
+	disableRawInput();
+
+	return 0;
 }

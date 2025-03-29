@@ -46,4 +46,6 @@ void rawInput();
 // Reverts back to original functionality of terminal key strokes
 void disableRawInput();
 
+int callFunctions();
+
 #endif //SHELL_FUNCTIONS_H
