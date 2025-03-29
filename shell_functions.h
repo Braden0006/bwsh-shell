@@ -40,4 +40,10 @@ int create_process(char **args);
 // Tokenizes a line entered by the user
 char **tokenize_line(char *line);
 
+// Enables terminal to directly read key strokes as they are being typed
+void rawInput();
+
+// Reverts back to original functionality of terminal key strokes
+void disableRawInput();
+
 #endif //SHELL_FUNCTIONS_H
