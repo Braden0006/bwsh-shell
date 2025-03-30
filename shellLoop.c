@@ -191,11 +191,15 @@ void print_list(linked_list *list) {
 	// Node variable for keeping track of the current node
 	Node *current = list->head;
 
+	printf("\n");
+
 	// Prints each node in the list until it reaches the end
 	while (current) {
-		printf("%s\n", current->value);
+		printf("| %s ", current->value);
 		current = current->next;
 	}
+
+	printf("|\n");
 }
 
 // Function for deallocating the memory for a linked list
