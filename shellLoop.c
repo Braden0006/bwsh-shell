@@ -88,8 +88,6 @@ void main_loop(char *command, char *commands[], linked_list *list) {
 						// Prints the command history
 						print_list(list);
 
-						callFunctions();
-
 						is_command = true;
 					}
 

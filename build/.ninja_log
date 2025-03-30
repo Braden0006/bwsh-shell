@@ -1,15 +1,11 @@
 # ninja log v6
-1	161	1743224599963418980	CMakeFiles/bwsh_shell.dir/main.c.o	77ea0877abf92611
-2	161	1743224599963860474	CMakeFiles/bwsh_shell.dir/create_process.c.o	86db8d37b1c9d598
-2	57	1743225126345762116	CMakeFiles/bwsh_shell.dir/shellLoop.c.o	e8d52ed534c80088
-2	161	1743224599964008806	CMakeFiles/bwsh_shell.dir/tokenize_line.c.o	4751388236fd2e89
-161	257	1743224600123300773	bwsh_shell	70e43add45e80728
-1	37	1743225167578330494	CMakeFiles/bwsh_shell.dir/arrow_keys.c.o	50019b2a7a469e6f
-38	70	1743225167615200681	bwsh_shell	5a9abd00aff23601
-3	157	1743226959695021965	CMakeFiles/bwsh_shell.dir/main.c.o	77ea0877abf92611
-3	157	1743226959695542213	CMakeFiles/bwsh_shell.dir/create_process.c.o	86db8d37b1c9d598
-3	157	1743226959695698546	CMakeFiles/bwsh_shell.dir/arrow_keys.c.o	50019b2a7a469e6f
-3	157	1743226959695370672	CMakeFiles/bwsh_shell.dir/shellLoop.c.o	e8d52ed534c80088
-157	252	1743226959849595892	bwsh_shell	5a9abd00aff23601
 3	40	1743227085414550320	CMakeFiles/bwsh_shell.dir/arrow_keys.c.o	50019b2a7a469e6f
 41	76	1743227085452478523	bwsh_shell	5a9abd00aff23601
+2	161	1743224599964008806	CMakeFiles/bwsh_shell.dir/tokenize_line.c.o	4751388236fd2e89
+3	157	1743226959695370672	CMakeFiles/bwsh_shell.dir/shellLoop.c.o	e8d52ed534c80088
+3	157	1743226959695542213	CMakeFiles/bwsh_shell.dir/create_process.c.o	86db8d37b1c9d598
+3	157	1743226959695021965	CMakeFiles/bwsh_shell.dir/main.c.o	77ea0877abf92611
+1	238	1743304072649891673	CMakeFiles/bwsh_shell.dir/main.c.o	77ea0877abf92611
+1	238	1743304072650365914	CMakeFiles/bwsh_shell.dir/shellLoop.c.o	e8d52ed534c80088
+1	239	1743304072650558994	CMakeFiles/bwsh_shell.dir/create_process.c.o	86db8d37b1c9d598
+239	381	1743304072887649609	bwsh_shell	70e43add45e80728

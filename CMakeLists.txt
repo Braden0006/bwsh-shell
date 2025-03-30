@@ -11,5 +11,4 @@ add_executable(bwsh_shell main.c
         shellLoop.c
         shell_functions.h
         create_process.c
-        tokenize_line.c
-        arrow_keys.c)
+        tokenize_line.c)

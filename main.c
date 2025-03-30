@@ -19,7 +19,6 @@ int main()
 		exit(EXIT_FAILURE);
 	}
 
-	char *commandHistory[3] = {};
 	linked_list *list = create_list();
 
 	// Infinite loop
