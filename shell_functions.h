@@ -40,4 +40,6 @@ int create_process(char **args);
 // Tokenizes a line entered by the user
 char **tokenize_line(char *line);
 
+void ncurses_terminal(linked_list *list);
+
 #endif //SHELL_FUNCTIONS_H
