@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.30)
 project(bwsh_shell C)
 
+find_package(Curses REQUIRED)
+
 set(CMAKE_C_STANDARD 11)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -12,3 +14,5 @@ add_executable(bwsh_shell main.c
         shell_functions.h
         create_process.c
         tokenize_line.c)
+
+target_link_libraries(bwsh_shell ${CURSES_LIBRARY})

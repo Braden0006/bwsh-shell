@@ -84,9 +84,29 @@ void main_loop(char *command, char *commands[], linked_list *list) {
 
 					// Checks to see if the user command start with 'history'
 					else if (strcmp(commands[i], commands[2]) == 0) {
+						int ch;
 
-						// Prints the command history
-						print_list(list);
+						initscr();
+						cbreak();
+						noecho();
+						keypad(stdscr, TRUE);
+
+						printw("Press the up arrow to print history\n");
+						printw("Press the 'q' key to quit\n");
+						refresh();
+
+						while ((ch = getch()) != 'q') {
+							switch (ch) {
+								case KEY_UP:
+									print_list(list);
+									break;
+								default:
+									printw("Other key was pressed: %d\n", ch);
+									break;
+							}
+							refresh();
+						}
+						endwin();
 
 						is_command = true;
 					}
@@ -191,15 +211,15 @@ void print_list(linked_list *list) {
 	// Node variable for keeping track of the current node
 	Node *current = list->head;
 
-	printf("\n");
+	printw("\n");
 
 	// Prints each node in the list until it reaches the end
 	while (current) {
-		printf("| %s ", current->value);
+		printw("| %s ", current->value);
 		current = current->next;
 	}
 
-	printf("|\n");
+	printw("|\n");
 }
 
 // Function for deallocating the memory for a linked list
