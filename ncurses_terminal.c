@@ -3,27 +3,31 @@
 #include "shell_functions.h"
 
 void ncurses_terminal(linked_list *list) {
-	int ch;
+	int inputChar;
 
+	// Initializes scanner
 	initscr();
-	cbreak();
-	noecho();
+
+	// Enables arrow keys
 	keypad(stdscr, TRUE);
+
+	// Enables vertical scrolling
+	scrollok(stdscr, TRUE);
 
 	printw("Press the up arrow to print history\n");
 	printw("Press the 'q' key to quit\n");
-	refresh();
 
-	while ((ch = getch()) != 'q') {
-		switch (ch) {
+	while ((inputChar = getch()) != 'q') {
+		switch (inputChar) {
 			case KEY_UP:
 				print_list(list);
 				break;
 			default:
-				printw("Other key was pressed: %d\n", ch);
+				printw("Other key was pressed: %d\n", inputChar);
 				break;
 		}
-		refresh();
 	}
+
+	// Ends scanner
 	endwin();
 }
