@@ -121,12 +121,14 @@ void main_loop(char *command, char *commands[], linked_list *list) {
 						// Tokenizes user input
 						char **separated_command = tokenize_line(duplicate_string);
 						
+						// Creates table
 						const char *create_table = 
 							"CREATE TABLE IF NOT EXISTS Aliases ("
 							"id INTEGER PRIMARY KEY AUTOINCREMENT, "
 							"name TEXT NOT NULL, "
 							"value TEXT NOT NULL);";
 
+						// Executes the SQLite command
 						rc = sqlite3_exec(db, create_table, 0, 0, &zErrMsg);
 
 						if (rc != SQLITE_OK) {
@@ -150,9 +152,11 @@ void main_loop(char *command, char *commands[], linked_list *list) {
 							return;
 						}
 
+						// Stores user input in separate variables
 						char *name = separated_command[1];
 						char *value = separated_command[2];
 
+						// Binds the above values to the SQLite command
 						sqlite3_bind_text(stmt, 1, name, -1, SQLITE_STATIC);
 						sqlite3_bind_text(stmt, 2, value, -1, SQLITE_STATIC);
 
