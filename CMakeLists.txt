@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.30)
 project(bwsh_shell C)
 
 find_package(Curses REQUIRED)
+find_package(SQLite3 REQUIRED)
 
 set(CMAKE_C_STANDARD 11)
 
@@ -17,3 +18,4 @@ add_executable(bwsh_shell main.c
         ncurses_terminal.c)
 
 target_link_libraries(bwsh_shell ${CURSES_LIBRARY})
+target_link_libraries(bwsh_shell sqlite3)
