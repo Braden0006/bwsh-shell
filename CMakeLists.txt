@@ -17,7 +17,8 @@ add_executable(bwsh_shell main.c
         tokenize_line.c
         ncurses_terminal.c
         linked_list.c
-        sqlite_add_record.c)
+        sqlite_add_record.c
+        sqlite_check_command.c)
 
 target_link_libraries(bwsh_shell ${CURSES_LIBRARY})
 target_link_libraries(bwsh_shell sqlite3)

@@ -5,6 +5,11 @@
 #ifndef SHELL_FUNCTIONS_H
 #define SHELL_FUNCTIONS_H
 
+typedef struct {
+      char *key;
+      char *value;
+} item;
+
 // Struct for a key-value map with a pointer to the next user element
 typedef struct Node {
     char *value;
@@ -43,5 +48,7 @@ char **tokenize_line(char *line);
 void ncurses_terminal(linked_list *list);
 
 void sqlite_add_record(char *command);
+
+void sqlite_check_command(item commands[], int num_commands);
 
 #endif //SHELL_FUNCTIONS_H
