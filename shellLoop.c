@@ -13,16 +13,103 @@
 
 #include "shell_functions.h"
 
+typedef struct {
+      char *key;
+      char *value;
+} item;
+
+item *linear_search(item *commands, size_t size, const char *key) {
+	for (size_t i = 0; i < size; i++) {
+		if (strcmp(commands[i].key, key) == 0) {
+			return &commands[i];
+		}
+	}
+
+	return NULL;
+}
+
+static int callback(void *NotUsed, int argc, char **argv, char **azColName) {
+	for (int i = 0; i < argc; i++) {
+		printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
+	}
+	printf("\n");
+	return 0;
+}
+
 void main_loop(char *command) {
 
 	linked_list *list = create_list();
 
 	// Infinite loop
 	for (;;) {
-		char *commands[] = {"ls", "cd", "history", "alias", "pwd", "clear"};
+		item commands[] = {{"ls", "ls"}, {"cd", "cd"}, {"history", "history"}, {"alias", "alias"}, {"pwd", "pwd"}, {"clear", "clear"}};
+
+		size_t num_commands = sizeof(commands) / sizeof(item);
+
+		for (int i = 0; i < num_commands; i++) {
+			sqlite3 *db;
+			sqlite3_stmt *stmt;
+
+			char *zErrMsg = 0;
+
+			int rc;
+
+			rc = sqlite3_open("test.db", &db);
+
+			if (rc != SQLITE_OK) {
+				fprintf(stderr, "Could not open database: %s\n", sqlite3_errmsg(db));
+			}
+			
+			// Creates table if it doesn't exist
+			const char *create_table = 
+				"CREATE TABLE IF NOT EXISTS Aliases ("
+				"id INTEGER PRIMARY KEY AUTOINCREMENT, "
+				"name TEXT NOT NULL, "
+				"value TEXT NOT NULL);";
+
+			// Executes the SQLite command
+			rc = sqlite3_exec(db, create_table, 0, 0, &zErrMsg);
+
+			if (rc != SQLITE_OK) {
+				fprintf(stderr, "SQLite error: %s\n", sqlite3_errmsg(db));
+				sqlite3_close(db);
+				return;
+			}
+
+			const char *sql_command = "SELECT name FROM Aliases WHERE name=?;";
+
+			// Prepares the sqlite statement
+			rc = sqlite3_prepare_v2(db, sql_command, -1, &stmt, 0);
+
+			if (rc != SQLITE_OK) {
+				fprintf(stderr, "SQL error: %s\n", sqlite3_errmsg(db));
+				sqlite3_close(db);
+				return;
+			}
+
+			char *key = commands[i].key;
+
+			// Binds the above values to the SQLite command
+			sqlite3_bind_text(stmt, 1, key, -1, SQLITE_STATIC);
+
+			rc = sqlite3_step(stmt);
+
+			if (rc != SQLITE_DONE) {
+				fprintf(stderr, "Execution failed: %s;\n", sqlite3_errmsg(db));
+			}
+
+			rc = sqlite3_exec(db, sql_command, callback, 0, &zErrMsg);
+
+			if (rc != SQLITE_OK) {
+				fprintf(stderr, "SQL error: %s\n", zErrMsg);
+				sqlite3_free(zErrMsg);
+			}
+
+			sqlite3_finalize(stmt);
+			sqlite3_close(db);
+		}
 
 		char const target[] = "quit";
-
 
 		printf("\n$ ");
 
@@ -42,11 +129,11 @@ void main_loop(char *command) {
 			bool is_command = false;
 
 			// Loops over each element in the "command" array
-			for (int i = 0; i < 6; i++) {
-				if (strstr(command, commands[i]) != NULL) {
+			for (int i = 0; i < num_commands; i++) {
+				if (strstr(command, commands[i].value) != NULL) {
 
 					// Checks to see if the user command starts with 'ls'
-					if (strcmp(commands[i], commands[0]) == 0) {
+					if (strcmp(commands[i].value, commands[0].value) == 0) {
 
 						char *duplicate_string;
 
@@ -67,7 +154,7 @@ void main_loop(char *command) {
 					}
 
 					// Checks to see if the user command starts with 'cd'
-					else if (strcmp(commands[i], commands[1]) == 0) {
+					else if (strcmp(commands[i].value, commands[1].value) == 0) {
 
 						char *duplicate_string;
 
@@ -88,7 +175,7 @@ void main_loop(char *command) {
 					}
 
 					// Checks to see if the user command start with 'history'
-					else if (strcmp(commands[i], commands[2]) == 0) {
+					else if (strcmp(commands[i].value, commands[2].value) == 0) {
 
 						ncurses_terminal(list);
 
@@ -96,7 +183,7 @@ void main_loop(char *command) {
 					}
 
 					// Checks to see if the user command starts with 'alias'
-					else if (strstr(commands[i], commands[3]) != NULL) {
+					else if (strstr(commands[i].value, commands[3].value) != NULL) {
 
 						// Pointer to sqlite database
 						sqlite3 *db;
@@ -125,25 +212,6 @@ void main_loop(char *command) {
 						// Tokenizes user input
 						char **separated_command = tokenize_line(duplicate_string);
 						
-						// Creates table
-						const char *create_table = 
-							"CREATE TABLE IF NOT EXISTS Aliases ("
-							"id INTEGER PRIMARY KEY AUTOINCREMENT, "
-							"name TEXT NOT NULL, "
-							"value TEXT NOT NULL);";
-
-						// Executes the SQLite command
-						rc = sqlite3_exec(db, create_table, 0, 0, &zErrMsg);
-
-						if (rc != SQLITE_OK) {
-							fprintf(stderr, "SQLite error: %s\n", sqlite3_errmsg(db));
-							sqlite3_close(db);
-							return;
-						} else {
-							printf("Table created successfully!\n");
-						}
-
-
 						// SQL command to insert data into Aliases table
 						const char *sql = "INSERT INTO Aliases (name, value) VALUES (?, ?);";
 
@@ -185,7 +253,7 @@ void main_loop(char *command) {
 					}
 
 					// Checks to see if the user command starts with 'pwd'
-					else if (strstr(commands[i], commands[4]) != NULL) {
+					else if (strstr(commands[i].value, commands[4].value) != NULL) {
 
 						char *duplicate_string;
 
@@ -206,7 +274,7 @@ void main_loop(char *command) {
 					}
 
 					// Checks to see if the user command is "clear"
-					else if (strstr(commands[i], commands[5]) != NULL) {
+					else if (strstr(commands[i].value, commands[5].value) != NULL) {
 
 						// Clears the terminal
 						system("clear");
