@@ -28,5 +28,11 @@
   "command": "/Library/Developer/CommandLineTools/usr/bin/cc -g -std=gnu11 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk -o CMakeFiles/bwsh_shell.dir/ncurses_terminal.c.o -c /Users/bradenwhitcher/workspace/github.com/Braden0006/bwsh-shell/ncurses_terminal.c",
   "file": "/Users/bradenwhitcher/workspace/github.com/Braden0006/bwsh-shell/ncurses_terminal.c",
   "output": "CMakeFiles/bwsh_shell.dir/ncurses_terminal.c.o"
+},
+{
+  "directory": "/Users/bradenwhitcher/workspace/github.com/Braden0006/bwsh-shell/build",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/cc -g -std=gnu11 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk -o CMakeFiles/bwsh_shell.dir/linked_list.c.o -c /Users/bradenwhitcher/workspace/github.com/Braden0006/bwsh-shell/linked_list.c",
+  "file": "/Users/bradenwhitcher/workspace/github.com/Braden0006/bwsh-shell/linked_list.c",
+  "output": "CMakeFiles/bwsh_shell.dir/linked_list.c.o"
 }
 ]
