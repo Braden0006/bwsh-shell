@@ -51,3 +51,13 @@
 3	47	1743538679563930172	CMakeFiles/bwsh_shell.dir/main.c.o	77ea0877abf92611
 4	52	1743538679564310712	CMakeFiles/bwsh_shell.dir/shellLoop.c.o	e8d52ed534c80088
 52	88	1743538679613136530	bwsh_shell	edd07bace74221a0
+3	235	1743591281763837232	CMakeFiles/bwsh_shell.dir/main.c.o	77ea0877abf92611
+3	235	1743591281764422718	CMakeFiles/bwsh_shell.dir/create_process.c.o	86db8d37b1c9d598
+3	235	1743591281764211431	CMakeFiles/bwsh_shell.dir/shellLoop.c.o	e8d52ed534c80088
+3	235	1743591281764608422	CMakeFiles/bwsh_shell.dir/ncurses_terminal.c.o	8b9af4a65343fce
+238	336	1743591281998855930	bwsh_shell	edd07bace74221a0
+3	49	1743591566233709517	CMakeFiles/bwsh_shell.dir/ncurses_terminal.c.o	8b9af4a65343fce
+3	53	1743591566233569979	CMakeFiles/bwsh_shell.dir/create_process.c.o	86db8d37b1c9d598
+2	55	1743591566233101157	CMakeFiles/bwsh_shell.dir/main.c.o	77ea0877abf92611
+2	63	1743591566233411149	CMakeFiles/bwsh_shell.dir/shellLoop.c.o	e8d52ed534c80088
+63	95	1743591566293717007	bwsh_shell	edd07bace74221a0

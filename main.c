@@ -10,7 +10,6 @@
 
 int main()
 {
-	char *commands[] = {"ls", "cd", "history", "alias", "pwd", "clear"};
 	char *command = (char *)malloc(50 * sizeof(char));
 
 	// Checks to see if memory allocation failed
@@ -20,16 +19,13 @@ int main()
 		exit(EXIT_FAILURE);
 	}
 
-	linked_list *list = create_list();
 
 	// Infinite loop
-	main_loop(command, commands, list);
+	main_loop(command);
 
 	// Deallocates memory for the command the user entered
 	free(command);
 
-	// Deallocates memory for the linked list
-	free_list(list);
 
 	return 0;
 }

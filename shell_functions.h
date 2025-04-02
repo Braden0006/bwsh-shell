@@ -29,7 +29,7 @@ void print_list(linked_list *list);
 void free_list(linked_list *list);
 
 // Deals with the main, infinite loop
-void main_loop(char *command, char *commands[], linked_list *list);
+void main_loop(char *command);
 
 // Prints the history of commands
 void printHistory(char *input[]);

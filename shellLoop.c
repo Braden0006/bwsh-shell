@@ -13,12 +13,16 @@
 
 #include "shell_functions.h"
 
-void main_loop(char *command, char *commands[], linked_list *list) {
+void main_loop(char *command) {
+
+	linked_list *list = create_list();
 
 	// Infinite loop
 	for (;;) {
+		char *commands[] = {"ls", "cd", "history", "alias", "pwd", "clear"};
 
 		char const target[] = "quit";
+
 
 		printf("\n$ ");
 
@@ -231,6 +235,9 @@ void main_loop(char *command, char *commands[], linked_list *list) {
 			}
 		}
 	}
+
+	// Deallocates memory for the linked list
+	free_list(list);
 }
 
 // Function for creating a linked list
