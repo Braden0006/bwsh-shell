@@ -42,4 +42,6 @@ char **tokenize_line(char *line);
 
 void ncurses_terminal(linked_list *list);
 
+void sqlite_add_record(char *command);
+
 #endif //SHELL_FUNCTIONS_H
