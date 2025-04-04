@@ -28,7 +28,7 @@ void sqlite_check_command(item commands[], int num_commands) {
 
 		int rc;
 
-		rc = sqlite3_open("test.db", &db);
+		rc = sqlite3_open("/Users/bradenwhitcher/workspace/github.com/Braden0006/bwsh-shell/build/test.db", &db);
 
 		if (rc != SQLITE_OK) {
 			fprintf(stderr, "Could not open database: %s\n", sqlite3_errmsg(db));
@@ -70,14 +70,16 @@ void sqlite_check_command(item commands[], int num_commands) {
 
 		if (rc != SQLITE_DONE) {
 			fprintf(stderr, "Execution failed: %s;\n", sqlite3_errmsg(db));
+	 	} else {
+			printf("Printing names of records was successful!");
 		}
 
-		rc = sqlite3_exec(db, sql_command, callback, 0, &zErrMsg);
-
-		if (rc != SQLITE_OK) {
-			fprintf(stderr, "SQL error: %s\n", zErrMsg);
-			sqlite3_free(zErrMsg);
-		}
+		/*rc = sqlite3_exec(db, sql_command, callback, 0, &zErrMsg);*/
+		/**/
+		/*if (rc != SQLITE_OK) {*/
+		/*	fprintf(stderr, "SQL error: %s\n", zErrMsg);*/
+		/*	sqlite3_free(zErrMsg);*/
+		/*}*/
 
 		sqlite3_finalize(stmt);
 		sqlite3_close(db);

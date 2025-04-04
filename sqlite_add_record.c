@@ -23,7 +23,7 @@ void sqlite_add_record(char *command) {
 	int rc;
 
 	// Opens the database
-	rc = sqlite3_open("test.db", &db);
+	rc = sqlite3_open("/Users/bradenwhitcher/workspace/github.com/Braden0006/bwsh-shell/build/test.db", &db);
 
 	// Checks to see if the sqlite database can be opened or not
 	if (rc != SQLITE_OK) {
