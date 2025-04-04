@@ -19,7 +19,6 @@ int main()
 		exit(EXIT_FAILURE);
 	}
 
-
 	// Infinite loop
 	main_loop(command);
 
