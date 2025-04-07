@@ -19,10 +19,13 @@ void main_loop(char *command) {
 
 	// Infinite loop
 	for (;;) {
+
+		// Array that stores key-value pairs of built-in commands, saved aliases are set as the values
 		item commands[] = {{"ls", "ls"}, {"cd", "cd"}, {"history", "history"}, {"alias", "alias"}, {"pwd", "pwd"}, {"clear", "clear"}};
 
 		int num_commands = sizeof(commands) / sizeof(item);
 
+		// Function that sets the users alias as the value in the key-value pair above
 		sqlite_check_command(commands, num_commands);
 
 		/*for (int i = 0; i < num_commands; i++) {*/

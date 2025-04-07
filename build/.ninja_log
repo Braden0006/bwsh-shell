@@ -25,3 +25,7 @@
 2	65	1743997462990305302	CMakeFiles/bwsh_shell.dir/shellLoop.c.o	e8d52ed534c80088
 3	65	1743997462990730334	CMakeFiles/bwsh_shell.dir/sqlite_check_command.c.o	16d17accff1d0d9d
 65	101	1743997463052836389	bwsh_shell	1d826dbf4a189560
+2	65	1743997940772254182	CMakeFiles/bwsh_shell.dir/shellLoop.c.o	e8d52ed534c80088
+3	65	1743997940772559799	CMakeFiles/bwsh_shell.dir/sqlite_add_record.c.o	ea62b2d887ca8f26
+3	65	1743997940772715087	CMakeFiles/bwsh_shell.dir/sqlite_check_command.c.o	16d17accff1d0d9d
+65	101	1743997940835030055	bwsh_shell	1d826dbf4a189560
