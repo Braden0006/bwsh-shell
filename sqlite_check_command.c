@@ -9,20 +9,12 @@
 
 #include "shell_functions.h"
 
-static int callback(void *NotUsed, int argc, char **argv, char **azColName) {
-	for (int i = 0; i < argc; i++) {
-		printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
-	}
-	printf("\n");
-	return 0;
-}
-
 void sqlite_check_command(item commands[], int num_commands) {
 
-	for (int i = 0; i < num_commands; i++) {
+	sqlite3 *db;
+	sqlite3_stmt *stmt;
 
-		sqlite3 *db;
-		sqlite3_stmt *stmt;
+	for (int i = 0; i < num_commands; i++) {
 
 		char *zErrMsg = 0;
 
@@ -50,7 +42,7 @@ void sqlite_check_command(item commands[], int num_commands) {
 			return;
 		}
 
-		const char *sql_command = "SELECT name FROM Aliases WHERE name=?;";
+		const char *sql_command = "SELECT value FROM Aliases where name = ?;";
 
 		// Prepares the sqlite statement
 		rc = sqlite3_prepare_v2(db, sql_command, -1, &stmt, 0);
@@ -66,22 +58,36 @@ void sqlite_check_command(item commands[], int num_commands) {
 		// Binds the above values to the SQLite command
 		sqlite3_bind_text(stmt, 1, key, -1, SQLITE_STATIC);
 
-		rc = sqlite3_step(stmt);
+		while ((rc = sqlite3_step(stmt)) == SQLITE_ROW) {
+			int column_count = sqlite3_column_count(stmt);
+
+			for (int i = 0; i < column_count; i++) {
+
+				char *value_item;
+				value_item = (char *)sqlite3_column_text(stmt, i);
+
+				char *duplicate_value = strdup(value_item);
+
+				if (!duplicate_value) {
+					fprintf(stderr, "Memory allocation failed!\n");
+					exit(EXIT_FAILURE);
+				}
+
+
+				commands[i].value = duplicate_value;
+
+			}
+
+			//printf("%s: %s\n", commands[i].key, commands[i].value);
+
+		}
 
 		if (rc != SQLITE_DONE) {
 			fprintf(stderr, "Execution failed: %s;\n", sqlite3_errmsg(db));
-	 	} else {
-			printf("Printing names of records was successful!");
 		}
 
-		/*rc = sqlite3_exec(db, sql_command, callback, 0, &zErrMsg);*/
-		/**/
-		/*if (rc != SQLITE_OK) {*/
-		/*	fprintf(stderr, "SQL error: %s\n", zErrMsg);*/
-		/*	sqlite3_free(zErrMsg);*/
-		/*}*/
-
-		sqlite3_finalize(stmt);
-		sqlite3_close(db);
 	}
+
+	sqlite3_finalize(stmt);
+	sqlite3_close(db);
 }

@@ -13,16 +13,6 @@
 
 #include "shell_functions.h"
 
-item *linear_search(item *commands, size_t size, const char *key) {
-	for (size_t i = 0; i < size; i++) {
-		if (strcmp(commands[i].key, key) == 0) {
-			return &commands[i];
-		}
-	}
-
-	return NULL;
-}
-
 void main_loop(char *command) {
 
 	linked_list *list = create_list();
@@ -34,6 +24,10 @@ void main_loop(char *command) {
 		int num_commands = sizeof(commands) / sizeof(item);
 
 		sqlite_check_command(commands, num_commands);
+
+		/*for (int i = 0; i < num_commands; i++) {*/
+		/*	printf("%s: %s\n", commands[i].key, commands[i].value);*/
+		/*}*/
 
 		char const target[] = "quit";
 
@@ -66,6 +60,8 @@ void main_loop(char *command) {
 
 					// Checks to see if the user command starts with 'ls'
 					if (strcmp(user_tokenized_command[0], commands[0].value) == 0) {
+
+						user_tokenized_command[0] = commands[0].key;
 
 						// Creates the child process that executes the 'ls' command
 						create_process(user_tokenized_command);
