@@ -1,8 +1,4 @@
-#include <stdio.h>
 #include <string.h>
-#include <stdbool.h>
-#include <sys/syslimits.h>
-#include <unistd.h>
 #include <stdlib.h>
 #include <ncurses.h>
 #include <sqlite3.h>

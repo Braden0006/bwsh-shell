@@ -21,7 +21,7 @@ void main_loop(char *command) {
 	for (;;) {
 
 		// Array that stores key-value pairs of built-in commands, saved aliases are set as the values
-		item commands[] = {{"ls", "ls"}, {"cd", "cd"}, {"history", "history"}, {"alias", "alias"}, {"pwd", "pwd"}, {"clear", "clear"}};
+		item commands[] = {{"ls", "ls"}, {"cd", "cd"}, {"history", "history"}, {"alias", "alias"}, {"pwd", "pwd"}, {"clear", "clear"}, {"delete", "delete"}};
 
 		int num_commands = sizeof(commands) / sizeof(item);
 
@@ -99,6 +99,12 @@ void main_loop(char *command) {
 
 						// Inserts command as node in beginning of linked list
 						insertAtBeginning(list, command);
+
+						is_command = true;
+					}
+
+					else if (strstr(user_tokenized_command[0], commands[6].value) != NULL) {
+						printf("About to delete a record!!!!\n");
 
 						is_command = true;
 					}

@@ -25,6 +25,5 @@ int main()
 	// Deallocates memory for the command the user entered
 	free(command);
 
-
 	return 0;
 }

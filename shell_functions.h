@@ -51,4 +51,6 @@ void sqlite_add_record(char *command);
 
 void sqlite_check_command(item commands[], int num_commands);
 
+void sqlite_delete_record(char *command);
+
 #endif //SHELL_FUNCTIONS_H
