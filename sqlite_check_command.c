@@ -67,13 +67,14 @@ void sqlite_check_command(item commands[], int num_commands) {
 
 		// Loops over rows in each column
 		while ((rc = sqlite3_step(stmt)) == SQLITE_ROW) {
+
 			int column_count = sqlite3_column_count(stmt);
 
-			for (int i = 0; i < column_count; i++) {
+			for (int j = 0; j < column_count; j++) {
 
 				// Gets the value of the SQLite column
 				char *value_item;
-				value_item = (char *)sqlite3_column_text(stmt, i);
+				value_item = (char *)sqlite3_column_text(stmt, j);
 
 				// Creates a duplicate
 				char *duplicate_value = strdup(value_item);
@@ -89,15 +90,11 @@ void sqlite_check_command(item commands[], int num_commands) {
 				commands[i].value = duplicate_value;
 
 			}
-
-			//printf("%s: %s\n", commands[i].key, commands[i].value);
-
 		}
 
 		if (rc != SQLITE_DONE) {
 			fprintf(stderr, "Execution failed: %s;\n", sqlite3_errmsg(db));
 		}
-
 	}
 
 	// Closes the database file
