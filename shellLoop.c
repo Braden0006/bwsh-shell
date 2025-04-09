@@ -21,7 +21,7 @@ void main_loop(char *command) {
 	for (;;) {
 
 		// Array that stores key-value pairs of built-in commands, saved aliases are set as the values
-		item commands[] = {{"ls", "ls"}, {"cd", "cd"}, {"history", "history"}, {"alias", "alias"}, {"pwd", "pwd"}, {"clear", "clear"}, {"delete", "delete"}};
+		item commands[] = {{"ls", "ls"}, {"cd", "cd"}, {"history", "history"}, {"alias", "alias"}, {"pwd", "pwd"}, {"clear", "clear"}, {"delete", "delete"}, {"touch", "touch"}};
 
 		int num_commands = sizeof(commands) / sizeof(item);
 
@@ -75,8 +75,9 @@ void main_loop(char *command) {
 					// Checks to see if the user command starts with 'cd'
 					else if (strcmp(user_tokenized_command[0], commands[1].value) == 0) {
 
-						// Creates a separate child process that executes 'cd'
-						create_process(user_tokenized_command);
+						if (chdir(user_tokenized_command[1]) != 0) {
+							perror("chdir failed!");
+						}
 
 						// Inserts command as node in beginning of linked list
 						insertAtBeginning(list, command);
@@ -142,6 +143,21 @@ void main_loop(char *command) {
 						}
 
 						is_command = true;
+					}
+
+					// Checks to see if the user command is "touch"
+					else if (strstr(user_tokenized_command[0], commands[7].value) != NULL) {
+
+						// Creates a pointer to a file
+						FILE *fileptr;
+
+						// Creates the file
+						fopen(user_tokenized_command[1], "w");
+
+						// Closes the file pointer
+						fclose(fileptr);
+
+						is_command = false;
 					}
 
 					else {

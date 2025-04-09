@@ -29,14 +29,6 @@ int create_process(char **args) {
 		// Makes the parent process wait for the child process to finish
 		waitpid(pid, NULL, 0);
 
-		// If a directory argument is provided with the 'cd' command, then change to that directory
-		if ((strstr(args[0], "cd") != NULL) && args[1] != NULL) {
-			if (chdir(args[1]) != 0) {
-				perror("chdir failed!");
-				return -1;
-			}
-		}
-
 		return 0;
 	} else {
 		perror("fork failed");
