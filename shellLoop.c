@@ -103,12 +103,6 @@ void main_loop(char *command) {
 						is_command = true;
 					}
 
-					else if (strstr(user_tokenized_command[0], commands[6].value) != NULL) {
-						printf("About to delete a record!!!!\n");
-
-						is_command = true;
-					}
-
 					// Checks to see if the user command starts with 'pwd'
 					else if (strstr(user_tokenized_command[0], commands[4].value) != NULL) {
 
@@ -132,6 +126,20 @@ void main_loop(char *command) {
 
 						// Inserts command as node in beginning of linked list
 						insertAtBeginning(list, command);
+
+						is_command = true;
+					}
+
+					// Checks to see if the user command is "delete"
+					else if (strstr(user_tokenized_command[0], commands[6].value) != NULL) {
+
+						// Target string to compare to
+						char target_string[] = "alias";
+
+						if (strcmp(user_tokenized_command[1], target_string) == 0) {
+							printf("%s\n", user_tokenized_command[2]);
+							sqlite_delete_record(user_tokenized_command[2]);
+						}
 
 						is_command = true;
 					}

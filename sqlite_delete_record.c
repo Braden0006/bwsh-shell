@@ -17,7 +17,7 @@ void sqlite_delete_record(char *command) {
 	rc = sqlite3_prepare_v2(db, sql_command, -1, &stmt, 0);
 
 	if (rc != SQLITE_OK) {
-		fprintf(stderr, "SQL error: %s\n", sqlite3_errmsg(db));
+		fprintf(stderr, "SQL error in delete_command 1: %s\n", sqlite3_errmsg(db));
 		sqlite3_close(db);
 		return;
 	}
@@ -27,11 +27,11 @@ void sqlite_delete_record(char *command) {
 	rc = sqlite3_step(stmt);
 
 	if (rc != SQLITE_OK) {
-		fprintf(stderr, "SQLite Error: %s", sqlite3_errmsg(db));
+		fprintf(stderr, "sqlite error in delete_command 2: %s", sqlite3_errmsg(db));
 		sqlite3_finalize(stmt);
 		sqlite3_close(db);
 	} else {
-		printf("Alias deleted successfully!\n");
+		printf("alias deleted successfully!\n");
 	}
 
 	// Cleanup
