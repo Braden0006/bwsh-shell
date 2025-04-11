@@ -212,6 +212,12 @@ PKG_CONFIG_ARGN:STRING=
 //pkg-config executable
 PKG_CONFIG_EXECUTABLE:FILEPATH=PKG_CONFIG_EXECUTABLE-NOTFOUND
 
+//Path to a library.
+READLINE_LIBRARY:FILEPATH=/Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/lib/libreadline.tbd
+
+//The directory containing a CMake configuration file for Readline.
+Readline_DIR:PATH=Readline_DIR-NOTFOUND
+
 //Path to a file.
 SQLite3_INCLUDE_DIR:PATH=/Library/Frameworks/Mono.framework/Headers
 

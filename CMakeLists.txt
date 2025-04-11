@@ -4,6 +4,10 @@ project(bwsh_shell C)
 find_package(Curses REQUIRED)
 find_package(SQLite3 REQUIRED)
 
+find_library(READLINE_LIBRARY NAMES readline PATHS usr/lib /usr/local/lib /opt/homebrew/lib)
+
+link_directories(/usr/lib)
+
 set(CMAKE_C_STANDARD 11)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -23,3 +27,4 @@ add_executable(bwsh_shell main.c
 
 target_link_libraries(bwsh_shell ${CURSES_LIBRARY})
 target_link_libraries(bwsh_shell sqlite3)
+target_link_libraries(bwsh_shell ${READLINE_LIBRARY})

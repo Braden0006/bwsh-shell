@@ -111,9 +111,9 @@ build CMakeFiles/bwsh_shell.dir/sqlite_delete_record.c.o: C_COMPILER__bwsh_shell
 #############################################
 # Link the executable bwsh_shell
 
-build bwsh_shell: C_EXECUTABLE_LINKER__bwsh_shell_Debug CMakeFiles/bwsh_shell.dir/main.c.o CMakeFiles/bwsh_shell.dir/shellLoop.c.o CMakeFiles/bwsh_shell.dir/create_process.c.o CMakeFiles/bwsh_shell.dir/tokenize_line.c.o CMakeFiles/bwsh_shell.dir/ncurses_terminal.c.o CMakeFiles/bwsh_shell.dir/linked_list.c.o CMakeFiles/bwsh_shell.dir/sqlite_add_record.c.o CMakeFiles/bwsh_shell.dir/sqlite_check_command.c.o CMakeFiles/bwsh_shell.dir/sqlite_delete_record.c.o | /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/lib/libcurses.tbd
+build bwsh_shell: C_EXECUTABLE_LINKER__bwsh_shell_Debug CMakeFiles/bwsh_shell.dir/main.c.o CMakeFiles/bwsh_shell.dir/shellLoop.c.o CMakeFiles/bwsh_shell.dir/create_process.c.o CMakeFiles/bwsh_shell.dir/tokenize_line.c.o CMakeFiles/bwsh_shell.dir/ncurses_terminal.c.o CMakeFiles/bwsh_shell.dir/linked_list.c.o CMakeFiles/bwsh_shell.dir/sqlite_add_record.c.o CMakeFiles/bwsh_shell.dir/sqlite_check_command.c.o CMakeFiles/bwsh_shell.dir/sqlite_delete_record.c.o | /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/lib/libcurses.tbd /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/lib/libreadline.tbd
   FLAGS = -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk
-  LINK_LIBRARIES = /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/lib/libcurses.tbd  -lsqlite3
+  LINK_LIBRARIES = /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/lib/libcurses.tbd  -lsqlite3  /Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/lib/libreadline.tbd
   OBJECT_DIR = CMakeFiles/bwsh_shell.dir
   POST_BUILD = :
   PRE_LINK = :
