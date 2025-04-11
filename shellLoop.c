@@ -13,9 +13,6 @@
 
 #include "shell_functions.h"
 
-#include <readline/readline.h>
-
-
 void main_loop(char *command) {
 
 	linked_list *list = create_list();
@@ -33,26 +30,18 @@ void main_loop(char *command) {
 
 		char const target[] = "quit";
 
-		printf("\n$ ");
+		printf("\nbwsh$ ");
 
 		// Reads line from filestream
-		//fgets(command, 256, stdin);
+		fgets(command, 256, stdin);
 		
-		char *line;
-
-		line = readline("Enter a line of text: ");
-
-		if (line) {
-			printf("You entered: %s", line);
-			free(line);
-		}
-
 		// Replaces newline character with NULL terminator character
 		command[strcspn(command, "\n")] = '\0';
 
 		// Checks if the input string is equal to "quit" to break out of infinite loop
 		if (strcmp(command, target) == 0) {
 			break;
+			free(command);
 		}
 		else {
 

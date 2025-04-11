@@ -25,25 +25,19 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 17,
+				"line" : 13,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 28,
+				"line" : 24,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 29,
-				"parent" : 0
-			},
-			{
-				"command" : 1,
-				"file" : 0,
-				"line" : 30,
+				"line" : 25,
 				"parent" : 0
 			}
 		]
@@ -101,11 +95,6 @@
 			{
 				"backtrace" : 3,
 				"fragment" : "-lsqlite3",
-				"role" : "libraries"
-			},
-			{
-				"backtrace" : 4,
-				"fragment" : "/Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/lib/libreadline.tbd",
 				"role" : "libraries"
 			}
 		],
