@@ -25,9 +25,13 @@ void ncurses_terminal(linked_list *list) {
 
 	refresh();
 
+	Node *current = list->head;
+
 	while ((inputChar = getch()) != 'q') {
 		if (inputChar == KEY_UP) {
-			print_list(list);
+			//print_list(list);
+			printw("%s | ", current->value);
+			current = current->next;
 		} else {
 			getstr(buffer);
 			printw("You entered: %s\n", buffer);
