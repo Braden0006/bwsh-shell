@@ -1,9 +1,12 @@
 #include <ncurses.h>
+#include <stdlib.h>
 
 #include "shell_functions.h"
 
 void ncurses_terminal(linked_list *list) {
 	int inputChar;
+
+	char *buffer = (char *)malloc(50 * sizeof(char));
 
 	// Initializes scanner
 	initscr();
@@ -14,18 +17,22 @@ void ncurses_terminal(linked_list *list) {
 	// Enables vertical scrolling
 	scrollok(stdscr, TRUE);
 
+	// Disable echoing
+	//noecho();
+
 	printw("Press the up arrow to print history\n");
 	printw("Press the 'q' key to quit\n");
 
+	refresh();
+
 	while ((inputChar = getch()) != 'q') {
-		switch (inputChar) {
-			case KEY_UP:
-				print_list(list);
-				break;
-			default:
-				printw("Other key was pressed: %d\n", inputChar);
-				break;
+		if (inputChar == KEY_UP) {
+			print_list(list);
+		} else {
+			getstr(buffer);
+			printw("You entered: %s\n", buffer);
 		}
+		refresh();
 	}
 
 	// Ends scanner
