@@ -14,3 +14,6 @@ directory, and run the executable.
 * history
 * clear
 * touch
+<br>
+Even though this project was originally created for one of my computer science classes, I am going to continue to work on it, refine it, and add more features to make it an 
+impressive and robust shell.
